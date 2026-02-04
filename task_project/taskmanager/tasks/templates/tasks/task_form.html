@@ -1,0 +1,34 @@
+{% extends 'tasks/base.html' %}
+
+{% block content %}
+<h2>{% if task %}Edit Task{% else %}Create New Task{% endif %}</h2>
+
+<form method="post">
+    {% csrf_token %}
+    
+    <div class="form-group">
+        <label for="title">Task Title *</label>
+        <input type="text" id="title" name="title" value="{% if task %}{{ task.title }}{% endif %}" required>
+    </div>
+    
+    <div class="form-group">
+        <label for="description">Description</label>
+        <textarea id="description" name="description" rows="5">{% if task %}{{ task.description }}{% endif %}</textarea>
+    </div>
+    
+    {% if task %}
+    <div class="form-group">
+        <label>
+            <input type="checkbox" name="completed" {% if task.completed %}checked{% endif %}>
+            Mark as Completed
+        </label>
+    </div>
+    {% endif %}
+    
+    <button type="submit" class="btn btn-success">
+        {% if task %}Update Task{% else %}Create Task{% endif %}
+    </button>
+    <a href="{% url 'task_list' %}" class="btn" style="background-color: #6c757d;">Cancel</a>
+</form>
+
+{% endblock %}

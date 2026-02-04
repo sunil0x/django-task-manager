@@ -1,0 +1,61 @@
+{% extends 'tasks/base.html' %}
+
+{% block content %}
+<h2>My Tasks</h2>
+
+<a href="{% url 'task_create' %}" class="btn btn-success">➕ Create New Task</a>
+
+{% if tasks %}
+    <table>
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Description</th>
+                <th>Status</th>
+                <th>Created</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for task in tasks %}
+            <tr style="{% if task.completed %}background-color: #f0f8f0;{% endif %}">
+                <td>
+                    <strong {% if task.completed %}style="text-decoration: line-through; color: #999;"{% endif %}>
+                        {{ task.title }}
+                    </strong>
+                </td>
+                <td {% if task.completed %}style="color: #999;"{% endif %}>
+                    {{ task.description|truncatewords:10 }}
+                </td>
+                <td>
+                    {% if task.completed %}
+                        <span style="color: green; font-weight: bold;">✓ Completed</span>
+                    {% else %}
+                        <span style="color: orange; font-weight: bold;">⏳ Pending</span>
+                    {% endif %}
+                </td>
+                <td>{{ task.created_at|date:"M d, Y" }}</td>
+                <td>
+                    <!-- Toggle Complete/Pending Button -->
+                    <a href="{% url 'task_toggle' task.pk %}" 
+                       style="{% if task.completed %}color: orange;{% else %}color: green;{% endif %} margin-right: 10px; font-weight: bold;">
+                        {% if task.completed %}↩️ Undo{% else %}✓ Done{% endif %}
+                    </a>
+                    
+                    <a href="{% url 'task_update' task.pk %}" style="color: #007bff; margin-right: 10px;">Edit</a>
+                    <a href="{% url 'task_delete' task.pk %}" style="color: #dc3545;">Delete</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% else %}
+    <div style="text-align: center; padding: 50px; background-color: #f8f9fa; margin-top: 30px; border-radius: 10px;">
+        <h3 style="color: #666;">No tasks yet!</h3>
+        <p style="color: #999; margin: 10px 0;">Create your first task to get started.</p>
+        <a href="{% url 'task_create' %}" class="btn btn-success">Create Task</a>
+    </div>
+{% endif %}
+
+{% endblock %}
+
