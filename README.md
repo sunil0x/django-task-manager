@@ -1,15 +1,7 @@
 # Django Task Manager - CRUD Application with Authentication
 
-A simple yet powerful task management web application built with Django. This project demonstrates full CRUD (Create, Read, Update, Delete) functionality with user authentication and authorization.
+A simple  task management web application built with Django. This project demonstrates full CRUD (Create, Read, Update, Delete) functionality with user authentication and authorization.
 
-## 📋 Table of Contents
-
-- [Features](#features)
-- [Screenshots](#screenshots)
-- [Technologies Used](#technologies-used)
-- [Installation](#installation)
-- [Usage](#usage)
-- [Project Structure](#project-structure)
 
 ## ✨ Features
 
@@ -82,64 +74,6 @@ A simple yet powerful task management web application built with Django. This pr
 - **Authentication:** Django's built-in authentication system
 - **Template Engine:** Django Template Language (DTL)
 
-## 📦 Installation
-
-### Prerequisites
-
-- Python 3.8 or higher
-- pip (Python package installer)
-- Virtual environment (recommended)
-
-### Step-by-Step Installation
-
-1. **Clone the repository**
-   ```bash
-   git clone https://github.com/yourusername/django-task-manager.git
-   cd django-task-manager
-   ```
-
-2. **Create a virtual environment**
-   ```bash
-   # Windows
-   python -m venv venv
-   venv\Scripts\activate
-
-   # Mac/Linux
-   python3 -m venv venv
-   source venv/bin/activate
-   ```
-
-3. **Install dependencies**
-   ```bash
-   pip install django
-   ```
-
-4. **Navigate to project directory**
-   ```bash
-   cd taskmanager
-   ```
-
-5. **Run migrations**
-   ```bash
-   python manage.py makemigrations
-   python manage.py migrate
-   ```
-
-6. **Create a superuser (admin account)**
-   ```bash
-   python manage.py createsuperuser
-   ```
-   Follow the prompts to set username and password.
-
-7. **Run the development server**
-   ```bash
-   python manage.py runserver
-   ```
-
-8. **Access the application**
-   - Main App: http://127.0.0.1:8000/
-   - Admin Panel: http://127.0.0.1:8000/admin/
-
 ## 🚀 Usage
 
 ### For Regular Users
@@ -167,16 +101,7 @@ A simple yet powerful task management web application built with Django. This pr
 5. **Logout**
    - Click "Logout" in the navigation menu
 
-### For Administrators
 
-1. **Access Admin Panel**
-   - Go to http://127.0.0.1:8000/admin/
-   - Login with superuser credentials
-
-2. **Manage Users and Tasks**
-   - View all users and their tasks
-   - Manually create, edit, or delete tasks
-   - Manage user accounts
 
 ## 📁 Project Structure
 
@@ -212,40 +137,3 @@ django-task-manager/
 ├── db.sqlite3                   # SQLite database (created after migration)
 └── README.md                    # This file
 ```
-
-## 🔑 Key Files Explained
-
-- **models.py** - Defines the Task model with fields (user, title, description, completed, created_at)
-- **views.py** - Contains all view functions for authentication and CRUD operations
-- **urls.py** - URL routing for the application
-- **templates/** - HTML files for rendering pages
-- **admin.py** - Configuration for Django admin interface
-
-## 🎨 Features Breakdown
-
-### Task Model Fields
-
-| Field | Type | Description |
-|-------|------|-------------|
-| user | ForeignKey | Links task to user (for isolation) |
-| title | CharField | Task title (max 200 chars) |
-| description | TextField | Optional task details |
-| completed | BooleanField | Task completion status |
-| created_at | DateTimeField | Auto-generated timestamp |
-
-### Views
-
-| View | Purpose | Login Required |
-|------|---------|----------------|
-| register_view | User registration | No |
-| login_view | User authentication | No |
-| logout_view | User logout | No |
-| task_list | Display all user tasks | Yes |
-| task_create | Create new task | Yes |
-| task_update | Edit existing task | Yes |
-| task_delete | Delete task | Yes |
-| task_toggle_complete | Quick mark as done/pending | Yes |
-
-
-
-Author - Sunil
