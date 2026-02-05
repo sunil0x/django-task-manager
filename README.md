@@ -18,15 +18,6 @@ A simple  task management web application built with Django. This project demons
 - ✅ **Update** - Edit existing tasks and mark them as completed
 - ✅ **Delete** - Remove tasks with confirmation dialog
 
-### Additional Features
-- ✅ User-specific task isolation (users only see their own tasks)
-- ✅ Quick toggle button to mark tasks as done/pending
-- ✅ Visual feedback for completed tasks (strikethrough, green background)
-- ✅ Task timestamps (creation date)
-- ✅ Success/error message notifications
-- ✅ Responsive and clean UI design
-- ✅ Django Admin panel integration
-
 ## 📸 Screenshots
 
 ### Login Page
